@@ -33,7 +33,9 @@ bool p12_password_check(NSString *file, NSString *pass) {
 		return false;
 	}
 	
+	#if OPENSSL_VERSION_NUMBER >= 0x30000000L
 	OSSL_PROVIDER_load(NULL, "legacy");
+	#endif
 	
 	PKCS12 *p12 = d2i_PKCS12_bio(bio, NULL);
 	BIO_free(bio);
