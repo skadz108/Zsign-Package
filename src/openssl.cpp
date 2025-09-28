@@ -4,7 +4,9 @@
 #include <openssl/pem.h>
 #include <openssl/cms.h>
 #include <openssl/err.h>
+#if OPENSSL_VERSION_NUMBER >= 0x30000000
 #include <openssl/provider.h>
+#endif
 #include <openssl/pkcs12.h>
 #include <openssl/conf.h>
 
