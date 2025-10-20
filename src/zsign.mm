@@ -355,7 +355,11 @@ int checkCert(
 			OCSP_RESPONSE *resp;
 			d2i_OCSP_RESPONSE(&resp, (const unsigned char**)&respBytes, data.length);
 			OCSP_BASICRESP *basic = OCSP_response_get1_basic(resp);
+			#if OPENSSL_VERSION_NUMBER < 0x10100000L
 			ASN1_TIME *expirationDateAsn1 = X509_get_notAfter(cert);
+			#else
+			ASN1_TIME *expirationDateAsn1 = X509_get0_notAfter(cert);
+			#endif
 			NSString *fullDateString = [NSString stringWithFormat:@"20%s", expirationDateAsn1->data];
 			
 			NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
