@@ -9,6 +9,7 @@
 #endif
 #include <openssl/pkcs12.h>
 #include <openssl/conf.h>
+#include <openssl/bn.h>
 
 const char* ZSignAsset::s_szAppleDevCACert = ""
 "-----BEGIN CERTIFICATE-----\n"
