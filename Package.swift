@@ -22,15 +22,9 @@ let package = Package(
 			targets: ["ZsignSwift"]
 		),
 	],
-	dependencies: [
-		.package(url: "https://github.com/krzyzanowskim/OpenSSL", from: "3.6.0000")
-	],
 	targets: [
 		.target(
 			name: "Zsign",
-			dependencies: [
-				.product(name: "OpenSSL", package: "OpenSSL")
-			],
 			path: "src",
 			exclude: [
 				"common/archive.cpp",
@@ -57,9 +51,6 @@ let package = Package(
 				.headerSearchPath("."),
 				.headerSearchPath("common"),
 				.unsafeFlags(["-std=c++17"])
-			],
-			linkerSettings: [
-				.linkedFramework("OpenSSL"),
 			]
 		),
 		.target(
